@@ -1,17 +1,17 @@
 import React from 'react';
 import Recipe from './Recipe';
 
-const RecipeList = ({Recipes}) => {
+const RecipeList = ({recipes, handleRecipeAdd, handleRecipeDelete}) => {
     return (
       <div className="recipe-list">
         <div>
-        {Recipes.map(recipe => {
+        {recipes.map(recipe => {
           return (
-            <Recipe key={recipe.id} {...recipe} />
+            <Recipe key={recipe.id} {...recipe} handleRecipeDelete={handleRecipeDelete} />
           )})}
         </div>
         <div className="recipe-list__add-recipe-btn-container">
-          <button className="btn btn--primary">Add Recipe</button>
+          <button className="btn btn--primary" onClick={handleRecipeAdd}>Add Recipe</button>
         </div>
       </div>
     );

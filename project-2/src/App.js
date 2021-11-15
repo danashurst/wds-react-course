@@ -17,11 +17,11 @@ function App() {
       setRecipes(JSON.parse(recipesJSON));
     }
     return () => console.log('recipes set') // Unmount function (aka cleanup)
-  }, [])
+  }, []) // Empty dependency array = call only once
 
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipes));
-  }, [recipes]);
+  }, [recipes]); // Only call when array items change
 
   const handleRecipeAdd = () => {
     const newRecipe = {

@@ -51,10 +51,18 @@ function App() {
     setSelectedRecipeId(id);
   }
 
+  const handleRecipeChange = (id, recipe) => {
+    const newRecipes = [...recipes];
+    const index = newRecipes.findIndex(r => r.id === id);
+    newRecipes[index] = recipe;
+    setRecipes(newRecipes);
+  }
+
   const recipeContextValue =  {
     handleRecipeAdd,
     handleRecipeDelete,
-    handleRecipeSelect
+    handleRecipeSelect,
+    handleRecipeChange
   }
 
   return (
@@ -64,7 +72,6 @@ function App() {
         <RecipeEdit recipe={selectedRecipe} />
       )}
     </RecipeContext.Provider>
-
   )
 }
 

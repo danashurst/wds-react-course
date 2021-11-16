@@ -1,10 +1,28 @@
 import React from 'react'
 
-const RecipeIngredientEdit = ({ ingredient }) => {
+const RecipeIngredientEdit = (props) => {
+  const {
+    ingredient,
+    handleIngredientChange
+  } = props;
+
+  const handleChange = (changes) => {
+    handleIngredientChange(ingredient.id, { ...ingredient, ...changes });
+  }
+
   return (
     <>
-      <input type="text" className="recipe-edit__input" value={ingredient.name} />
-      <input type="text" className="recipe-edit__input" value={ingredient.amount} />
+      <input type="text"
+        className="recipe-edit__input" 
+        value={ingredient.name}
+        onInput={(e) => handleChange({name: e.target.value})}
+       />
+      <input 
+        type="text" 
+        className="recipe-edit__input" 
+        value={ingredient.amount} 
+        onInput={(e) => handleChange({amount: e.target.value})}
+      />
       <button className="btn btn--danger">&times;</button>
     </>
   )
